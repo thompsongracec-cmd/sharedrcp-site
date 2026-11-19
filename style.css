@@ -229,3 +229,68 @@ footer { background: var(--espresso-deep); color: var(--linen); padding: 70px 6v
 .dark .lede, .dark p { color: #e3d8c8; }
 .dark h2 { color: #fbf8f2; }
 .olive { background: var(--olive); }
+
+/* recent thoughts visual */
+.thoughts { display: grid; gap: 8px; }
+.thought {
+  background: var(--linen); border-radius: 12px 12px 12px 3px; padding: 10px 12px;
+  font-size: 13px; line-height: 1.4; color: var(--ink);
+}
+.thought:nth-child(2) { margin-left: 14px; background: var(--espresso); color: var(--linen); }
+.thought:nth-child(2) em { color: #d9cbb3; }
+.thought em { display: block; font-style: normal; font-size: 11px; color: var(--ink-soft); margin-top: 4px; letter-spacing: .5px; }
+
+/* lists visual */
+.subfeature + .subfeature { margin-top: 18px; }
+.subfeature p + p { margin-top: 12px; }
+.subfeature strong { font-weight: 400; color: var(--espresso); }
+.lists { display: grid; gap: 10px; }
+.list-card { background: var(--linen); border-radius: 14px; padding: 12px 14px; font-size: 13px; }
+.list-card.trip { background: var(--espresso); color: var(--linen); }
+.lhead { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 6px; }
+.lhead b { font-family: var(--serif); font-weight: 500; font-size: 17px; }
+.lhead span { font-size: 11px; opacity: .7; }
+.item { display: flex; align-items: center; gap: 8px; padding: 3px 0; }
+.item i { width: 13px; height: 13px; border: 1.5px solid currentColor; border-radius: 4px; flex-shrink: 0; opacity: .6; }
+.item.done { opacity: .55; text-decoration: line-through; }
+.item.done i { background: var(--terracotta); border-color: var(--terracotta); opacity: 1; }
+.item em { margin-left: auto; font-style: normal; font-size: 11px; opacity: .7; text-decoration: none; }
+
+/* today view showcase */
+.today-band { background: var(--linen-deep); }
+.today-wrap {
+  max-width: 1040px; margin: 0 auto; display: grid; grid-template-columns: 1fr 360px;
+  gap: 70px; align-items: center;
+}
+.today-copy p { color: var(--ink-soft); font-size: 18px; max-width: 520px; }
+.today-copy p + p { margin-top: 16px; }
+.phone {
+  width: 340px; background: var(--espresso-deep); border-radius: 48px; padding: 12px;
+  box-shadow: 0 30px 70px rgba(36, 27, 21, .3); justify-self: center;
+}
+.screen { background: var(--linen); border-radius: 38px; padding: 14px 20px 26px; min-height: 640px; }
+.status { display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: var(--ink); font-weight: 400; padding: 2px 6px 14px; }
+.status .notch { width: 92px; height: 26px; background: var(--espresso-deep); border-radius: 20px; }
+.status span:last-child { letter-spacing: 1px; font-size: 7px; }
+.t-date { font-size: 12px; color: var(--rust); letter-spacing: 1px; }
+.t-title { font-family: var(--serif); font-size: 40px; line-height: 1.1; margin-bottom: 14px; }
+.t-label { font-size: 11px; letter-spacing: 2px; color: var(--ink-soft); margin: 14px 0 7px; text-transform: uppercase; }
+.t-card { background: var(--card); border-radius: 14px; padding: 11px 13px; margin-bottom: 6px; font-size: 13px; line-height: 1.35; }
+.t-card b { font-weight: 400; display: block; }
+.t-card small { font-size: 11px; color: var(--ink-soft); }
+.hero-plan { display: flex; gap: 12px; align-items: center; background: var(--espresso); color: var(--linen); }
+.hero-plan small { color: #d9cbb3; }
+.t-time { font-family: var(--serif); font-size: 26px; color: #e9a987; }
+.t-card.row { display: flex; gap: 10px; align-items: center; }
+.box { width: 15px; height: 15px; border: 1.5px solid var(--oat); border-radius: 4px; flex-shrink: 0; }
+.t-up { background: var(--card); border-radius: 14px; padding: 4px 13px; }
+.t-up div { display: flex; gap: 12px; padding: 8px 0; font-size: 13px; border-bottom: 1px solid var(--linen-deep); }
+.t-up div:last-child { border-bottom: none; }
+.t-up span { color: var(--rust); min-width: 46px; font-size: 12px; }
+.t-up b { font-weight: 400; }
+.thought-mini b { color: var(--rust); }
+.thought-mini small { font-style: italic; }
+@media (max-width: 860px) {
+  .today-wrap { grid-template-columns: 1fr; gap: 50px; }
+  .phone { width: min(340px, 86vw); }
+}
