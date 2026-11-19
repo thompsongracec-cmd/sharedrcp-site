@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>shared. | Get it together... together.</title>
+  <meta name="description" content="shared. is a private, invite-only space for your circle to keep the restaurants, recipes and moments worth remembering.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <nav class="nav">
+    <a href="index.html" class="wordmark">shared<span>.</span></a>
+    <a href="features.html" class="nav-link">Explore the app</a>
+  </nav>
+
+  <!-- AI-generated video: auto-plays on a loop -->
+  <header class="hero">
+    <video id="hero-video" src="video.mp4" poster="img/poster.jpg" autoplay muted loop playsinline preload="auto"></video>
+    <div class="hero-copy">
+      <h1>Get it together... together.</h1>
+      <p>A private space for the people you actually trust, to keep the restaurants, recipes and moments worth remembering, and look back on them together.</p>
+      <a href="features.html" class="btn">Explore the app &rarr;</a>
+    </div>
+  </header>
+
+  <section class="dark">
+    <div class="narrow reveal">
+      <span class="eyebrow">Why shared.</span>
+      <h2>Made for the few, not the feed</h2>
+      <p class="lede">shared. isn't another public timeline. It's a private, invite-only circle for adults 18 and older. No strangers and no algorithm. Just your people and the things they think are worth sharing.</p>
+    </div>
+  </section>
+
+  <!-- X-factor: interactive recap demo -->
+  <section class="recap-demo" id="recap">
+    <span class="eyebrow">Try the recap</span>
+    <h2>This week in your circle</h2>
+    <p class="hint">Tap a card, swipe, or use the arrows to flip through a sample recap.</p>
+
+    <div class="deck" id="deck">
+      <article class="card">
+        <div class="tag">The table <em>1 / 5</em></div>
+        <div class="photo"><img src="img/table.jpg" alt="friends sharing dinner outdoors"></div>
+        <p class="note">"Go for the patio, order the short rib."</p>
+        <p class="by">Saved by Maya &middot; Tuesday</p>
+      </article>
+
+      <article class="card">
+        <div class="tag">The recipe <em>2 / 5</em></div>
+        <div class="photo"><img src="img/recipe.jpg" alt="an open, handwritten recipe book"></div>
+        <h4>Grandma's lemon cake</h4>
+        <p class="by">Tried by Jordan &middot; "Made it twice. No regrets."</p>
+      </article>
+
+      <article class="card">
+        <div class="tag">The moment <em>3 / 5</em></div>
+        <div class="song">
+          <div class="play"><svg width="16" height="18" viewBox="0 0 16 18" aria-hidden="true"><path d="M1 1l14 8-14 8z" fill="#fbf8f2"/></svg></div>
+          <div class="bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        </div>
+        <p class="note">"This song came on and reminded me of a story I have to tell you..."</p>
+        <p class="by">Shared by Elle &middot; Thursday night</p>
+      </article>
+
+      <article class="card">
+        <div class="tag">The things you forgot <em>4 / 5</em></div>
+        <h4>Almost forgot&hellip;</h4>
+        <p class="note">"The bakery on Lovers Lane finally reopened. Saturday?"</p>
+        <p class="by">Added by Sam &middot; 3 replies</p>
+      </article>
+
+      <article class="card">
+        <div class="tag">The week, recapped <em>5 / 5</em></div>
+        <h4>Your week, together</h4>
+        <div class="stats">
+          <div class="stat"><b>4</b><span>Places saved</span></div>
+          <div class="stat"><b>2</b><span>Recipes tried</span></div>
+          <div class="stat"><b>1</b><span>Night out planned</span></div>
+        </div>
+        <p class="by">See you next week.</p>
+      </article>
+    </div>
+
+    <div class="deck-controls">
+      <button class="arrow" id="prev" aria-label="previous card">&larr;</button>
+      <div class="dots" id="dots"></div>
+      <button class="arrow" id="next" aria-label="next card">&rarr;</button>
+    </div>
+  </section>
+
+  <footer>
+    <div class="xfactor">
+      <h5>X-factor: the interactive recap</h5>
+      <p>Flip through a sample weekly recap from a private circle (the dinner spot, the recipe, the song) the way members see it in the app. It turns our signature feature into something you can try before you download.</p>
+    </div>
+    <div class="fine">
+      <span>&copy; 2026 shared.</span>
+      <span>Hosted on GitHub Pages</span>
+    </div>
+  </footer>
+
+  <script>
+    // make sure the video starts even if a browser hesitates on autoplay
+    const v = document.getElementById('hero-video');
+    v.muted = true;
+    const tryPlay = () => v.play().catch(() => {});
+    tryPlay();
+    document.addEventListener('visibilitychange', () => { if (!document.hidden) tryPlay(); });
+
+    // recap deck
+    const cards = [...document.querySelectorAll('.card')];
+    const dotsWrap = document.getElementById('dots');
+    let order = cards.map((_, i) => i);
+    let busy = false;
+
+    cards.forEach((_, i) => {
+      const b = document.createElement('button');
+      b.setAttribute('aria-label', 'card ' + (i + 1));
+      b.addEventListener('click', () => goTo(i));
+      dotsWrap.appendChild(b);
+    });
+
+    function render() {
+      order.forEach((cardIndex, pos) => cards[cardIndex].dataset.pos = pos);
+      [...dotsWrap.children].forEach((d, i) => d.classList.toggle('active', i === order[0]));
+    }
+
+    function next() {
+      if (busy) return; busy = true;
+      const top = cards[order[0]];
+      top.classList.add('leaving');
+      setTimeout(() => {
+        order.push(order.shift());
+        top.classList.remove('leaving');
+        render(); busy = false;
+      }, 380);
+    }
+
+    function prev() {
+      if (busy) return; busy = true;
+      order.unshift(order.pop());
+      const incoming = cards[order[0]];
+      incoming.classList.add('returning');
+      render();
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        incoming.classList.remove('returning');
+        setTimeout(() => busy = false, 400);
+      }));
+    }
+
+    function goTo(i) {
+      while (order[0] !== i) order.push(order.shift());
+      render();
+    }
+
+    cards.forEach(c => c.addEventListener('click', next));
+    document.getElementById('next').addEventListener('click', next);
+    document.getElementById('prev').addEventListener('click', prev);
+    document.addEventListener('keydown', e => {
+      if (e.key === 'ArrowRight') next();
+      if (e.key === 'ArrowLeft') prev();
+    });
+
+    let startX = null;
+    const deck = document.getElementById('deck');
+    deck.addEventListener('touchstart', e => startX = e.touches[0].clientX, { passive: true });
+    deck.addEventListener('touchend', e => {
+      if (startX === null) return;
+      const dx = e.changedTouches[0].clientX - startX;
+      if (Math.abs(dx) > 40) { e.preventDefault(); dx < 0 ? next() : prev(); }
+      startX = null;
+    });
+
+    render();
+
+    // gentle fade-in on scroll
+    const io = new IntersectionObserver(entries => entries.forEach(en => {
+      if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
+    }), { threshold: .2 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  </script>
+
+  <!-- Chatling chatbot -->
+  <script> window.chtlConfig = { chatbotId: "1721572942" } </script>
+  <script async data-id="1721572942" id="chtl-script" type="text/javascript" src="https://chatling.ai/js/embed.js"></script>
+</body>
+</html>

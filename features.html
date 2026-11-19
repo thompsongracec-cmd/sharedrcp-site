@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>shared. | The app</title>
+  <meta name="description" content="Share, recap, discover, connect and plan with the people you trust most.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <nav class="nav solid">
+    <a href="index.html" class="wordmark">shared<span>.</span></a>
+    <a href="index.html" class="nav-link">Home</a>
+  </nav>
+
+  <header class="page-hero">
+    <span class="eyebrow">The app</span>
+    <h1>Share. Recap. Discover. Connect. Plan.</h1>
+    <p class="lede">Everything your circle loves, kept in one place.</p>
+  </header>
+
+  <section class="features-wrap">
+    <div class="feature reveal">
+      <div class="num">01</div>
+      <div>
+        <h3>Share</h3>
+        <p>Save a restaurant, a recipe or a link in one tap, right from the in-app browser. No copying and pasting, and no screenshots lost in your camera roll. Add your own photos to recipes, so your circle sees how yours actually turned out.</p>
+      </div>
+    </div>
+
+    <div class="feature reveal">
+      <div class="num">02</div>
+      <div>
+        <h3>Recap</h3>
+        <p>The place for everything you meant to mention and didn't: the funny thing that happened at work, the place you walked past and want to try, the story you forgot to tell at dinner. Add it to your recap, and your circle catches up on the little things that usually slip through.</p>
+      </div>
+    </div>
+
+    <div class="feature reveal">
+      <div class="num">03</div>
+      <div>
+        <h3>Discover</h3>
+        <p>Find your next favorite place through people whose taste you trust, not reviews from strangers. Browse what your circle is saving and keep what catches your eye.</p>
+      </div>
+    </div>
+
+    <div class="feature reveal">
+      <div class="num">04</div>
+      <div>
+        <h3>Connect</h3>
+        <p>Circles are small and invite-only. Stay close to the people who matter, see what they're loving, and share without performing for anyone else.</p>
+      </div>
+    </div>
+
+    <div class="feature reveal">
+      <div class="num">05</div>
+      <div>
+        <h3>Plan</h3>
+        <p>Turn "we should go there sometime" into an actual date. Pick a restaurant from your saved places or a recipe for a dinner in, choose a time, and your circle can see it and join.</p>
+
+        <div class="subfeature">
+          <div>
+            <h4>The calendar</h4>
+            <p>A shared calendar for your circle, with every dinner, get-together and night in on one view. Plans link straight back to the restaurant or recipe they came from, so the details are always one tap away. Sync it with your phone's calendar so your plans show up next to everything else, and once a plan happens, it shows up in your weekly recap.</p>
+          </div>
+          <div class="mini-cal" aria-hidden="true">
+            <div class="mhead"><span>December</span><span>3 plans</span></div>
+            <div class="grid">
+              <span>S</span><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span>
+              <span></span><span>1</span><span>2</span><span>3</span><span>4</span><span class="ev2">5</span><span>6</span>
+              <span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span><span class="ev">13</span>
+              <span>14</span><span>15</span><span>16</span><span>17</span><span class="ev2">18</span><span>19</span><span>20</span>
+              <span>21</span><span>22</span><span>23</span><span>24</span><span>25</span><span>26</span><span>27</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="dark">
+    <div class="two-col">
+      <div class="reveal">
+        <span class="eyebrow">Who it's for</span>
+        <h2>For your people</h2>
+        <p>Adults who want something quieter than social media: friends, families and small groups who'd rather share with ten people they know than ten thousand they don't.</p>
+      </div>
+      <div class="reveal">
+        <span class="eyebrow">Where it's headed</span>
+        <h2>Coming soon</h2>
+        <p>shared. is in private testing on iPhone and iPad now.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="back">
+    <a href="index.html" class="btn ghost">&larr; Back to home</a>
+  </div>
+
+  <footer>
+    <div class="fine">
+      <span>&copy; 2026 shared.</span>
+      <span>Hosted on GitHub Pages</span>
+    </div>
+  </footer>
+
+  <script>
+    const io = new IntersectionObserver(entries => entries.forEach(en => {
+      if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
+    }), { threshold: .15 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  </script>
+
+  <!-- Chatling chatbot -->
+  <script> window.chtlConfig = { chatbotId: "1721572942" } </script>
+  <script async data-id="1721572942" id="chtl-script" type="text/javascript" src="https://chatling.ai/js/embed.js"></script>
+</body>
+</html>
