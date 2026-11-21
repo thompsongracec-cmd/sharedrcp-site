@@ -294,3 +294,5 @@ footer { background: var(--espresso-deep); color: var(--linen); padding: 70px 6v
   .today-wrap { grid-template-columns: 1fr; gap: 50px; }
   .phone { width: min(340px, 86vw); }
 }
+
+.hero h1 .dot { color: #e9a987; }
